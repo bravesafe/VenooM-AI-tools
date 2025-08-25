@@ -1,0 +1,43 @@
+name: "VenooM-AI"
+author: "Usuario"
+description: |
+  Proyecto VenooM-AI: animaciones, text2video e imagen con PyTorch.
+  Instalación automática y ejecución en Pinokio.
+version: "1.0.1"
+
+workdir: "./"   # fuerza a trabajar en la carpeta donde está este yaml
+
+env:
+  TRITON_DISABLE_COMPILATION: "1"
+  TRITON_DISABLE: "1"
+  PYTORCH_CUDA_ALLOC_CONF: "expandable_segments:True"
+
+install:
+  - echo "=== Instalando dependencias ==="
+  - pip install --upgrade pip
+  - pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+  - pip install -r requirements.txt || echo "No requirements.txt encontrado, continuando..."
+  - echo "=== Instalación completada ==="
+
+apps:
+  - name: "Instalar entorno"
+    run: "python install.py"
+    cwd: "./"
+
+  - name: "Generar animación"
+    run: "python animate.py"
+    cwd: "./"
+
+  - name: "FramePack (mejorar video)"
+    run: "python framepack.py"
+    cwd: "./"
+
+  - name: "Generar imagen"
+    run: "python generate_image.py"
+    cwd: "./"
+
+  - name: "Texto a Video"
+    run: "python text2video.py"
+    cwd: "./"
+
+readme: "README.md"
