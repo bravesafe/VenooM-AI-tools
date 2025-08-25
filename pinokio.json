@@ -1,0 +1,28 @@
+{
+  "name": "VenooM-AI",
+  "description": "Generador de video IA con AnimateDiff, FramePack y Text2Video-Zero",
+  "scripts": {
+    "Install": "python install.py",
+    "Generate Image": "python generate_image.py",
+    "Animate Image": "python animate.py",
+    "Enhance Frames": "python framepack.py",
+    "Text2Video": "python text2video.py"
+  },
+  "inputs": {
+    "prompt": {
+      "type": "text",
+      "label": "Texto para generar imagen/video",
+      "default": "a futuristic city with flying cars"
+    },
+    "steps": {
+      "type": "number",
+      "label": "Pasos de difusión",
+      "default": 30
+    },
+    "duration": {
+      "type": "number",
+      "label": "Duración del video (segundos)",
+      "default": 4
+    }
+  }
+}
